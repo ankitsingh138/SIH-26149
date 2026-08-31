@@ -1,28 +1,29 @@
 import React from 'react';
 
-const Button = ({ children, variant = 'primary', size = 'md', className = '', disabled = false, ...props }) => {
-  const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none';
+const Button = ({ children, variant = 'primary', size = 'md', className = '', disabled = false, type = 'button', ...props }) => {
+  const baseStyles = 'inline-flex items-center justify-center font-medium rounded transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed';
   
   const variants = {
-    primary: 'bg-gradient-to-r from-indigo-600 to-cyan-600 text-white hover:from-indigo-700 hover:to-cyan-700 focus:ring-indigo-500 shadow-md hover:shadow-lg',
-    secondary: 'bg-white text-gray-700 border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 focus:ring-gray-500 shadow-sm',
-    success: 'bg-gradient-to-r from-emerald-600 to-green-600 text-white hover:from-emerald-700 hover:to-green-700 focus:ring-emerald-500 shadow-md hover:shadow-lg',
-    warning: 'bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:from-amber-600 hover:to-orange-600 focus:ring-amber-500 shadow-md hover:shadow-lg',
-    danger: 'bg-gradient-to-r from-red-600 to-pink-600 text-white hover:from-red-700 hover:to-pink-700 focus:ring-red-500 shadow-md hover:shadow-lg',
-    ghost: 'bg-transparent text-gray-700 hover:bg-gray-100 focus:ring-gray-500',
-    outline: 'bg-transparent border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-50 focus:ring-indigo-500',
+    primary: 'bg-primary text-on-primary hover:bg-primary/90 transition-colors shadow-glow-primary',
+    secondary: 'bg-surface-container border border-outline-variant text-on-surface hover:border-primary transition-colors',
+    danger: 'border border-error text-error hover:bg-error/10 transition-colors',
+    success: 'bg-success text-white hover:bg-success/90 transition-colors',
+    warning: 'bg-warning text-white hover:bg-warning/90 transition-colors',
+    ghost: 'bg-transparent text-on-surface-variant hover:bg-surface-container-high transition-colors',
+    outline: 'border-2 border-primary text-primary hover:bg-primary/10 transition-colors',
   };
   
   const sizes = {
-    sm: 'px-3 py-1.5 text-sm',
-    md: 'px-5 py-2.5 text-base',
-    lg: 'px-7 py-3.5 text-lg',
+    sm: 'px-sm py-xs text-sm',
+    md: 'px-md py-sm text-base',
+    lg: 'px-lg py-md text-lg',
   };
   
   return (
     <button
       className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
       disabled={disabled}
+      type={type}
       {...props}
     >
       {children}
